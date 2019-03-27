@@ -14,10 +14,16 @@ export class App {
   }
   
   private config(): void {
+    this.app.use(bodyParser.urlencoded({ extended: false}));
+    this.app.use(bodyParser.json());
   
   }
   
   private mongosetup(): void {
+    mongoose.connect(this.mongoUrl);
+    mongoose.Promise = global.Promise;
   }
   
 }
+
+export default App().app;
