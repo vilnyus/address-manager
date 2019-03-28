@@ -1,6 +1,6 @@
 
 import * as mongoose from 'mongoose';
-import { AddressSchema } from '../models/addressModel';
+import { AddressSchema } from '../models/model';
 import { Request, Response } from 'express';
 
 const Address = mongoose.model('Address', AddressSchema); //Why out of class AddressController
@@ -10,7 +10,7 @@ export class AddressController {
   public addNewAddress(req: Request, res: Response) {
     let newAddress = new Address(req.body);
     
-    addNewAddress.save((err, address)=>{
+    newAddress.save((err, address)=>{
       if(err){
         res.send(err);
       }

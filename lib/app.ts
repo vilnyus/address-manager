@@ -1,22 +1,22 @@
 
 import * as express from "express";
-import * as mongoose from "mongoose";
 import * as bodyParser from "body-parser";
+import * as mongoose from "mongoose"; 
 import { Routes } from "./routes/routes";
 
 
-export class App {
-  public app: Express.Application = express();
-  public routeAddress: Route = new Route();
+class App {
+  public app: express.Application;
+  public routeAddress: Routes = new Routes();
   public mongoUrl: string = "mongodb:127.0.0.1:27017/addressdb";
   
   constructor() {
   }
   
-  private config(): void {
+  private config(): void {    
+    this.app.use(bodyParser.json()); 
     this.app.use(bodyParser.urlencoded({ extended: false}));
-    this.app.use(bodyParser.json());
-  
+
   }
   
   private mongosetup(): void {
@@ -26,4 +26,4 @@ export class App {
   
 }
 
-export default App().app;
+export default new App().app;

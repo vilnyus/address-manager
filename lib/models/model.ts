@@ -5,32 +5,32 @@ const Schema = mongoose.Schema;
 
 export const AddressSchema = new Schema({
   firstName: {
-    type: string,
+    type: String,
     required: 'Enter first name'
   },
   
   lastName: {
-    type: string,
+    type: String,
     required: 'Enter second name'
   },
   
   streetName: {
-    type: string,
+    type: String,
     required: 'Enter street name'
   },
   
   homeNumber: {
-    type: number,
+    type: Number,
     required: 'ENter home number'
   },
   
   aptNumber: {
-    type: number,
+    type: Number,
     required: 'Enter apartment number'
   },
   
   telNumber: {
-    type: number
+    type: Number
   },
   
   createDate: {
