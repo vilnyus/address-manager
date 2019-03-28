@@ -10,7 +10,7 @@ export class AddressController {
   public addNewAddress(req: Request, res: Response) {
     let newAddress = new Address(req.body);
     
-    newAddress.save((err, address)=>{
+    addNewAddress.save((err, address)=>{
       if(err){
         res.send(err);
       }
