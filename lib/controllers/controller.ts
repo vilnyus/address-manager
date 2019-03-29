@@ -20,16 +20,21 @@ export class AddressController {
   }
   
   public getAllAddresses(req: Request, res: Response) {
-    Address.find({}, (err, addressList)=> {
+
+    Address.find({}, function(err, addressList){
+  
       if(err) {
         res.send(err);
       }
       res.json(addressList);
-    });  
+    });
+  
   }
   
   public getAddressById(req: Request, res: Response) {
-    Address.findOne(req.params.addressId, (err, address)=> { 
+
+    Address.findById/*findOne*/(req.params.addressId, function(err, address){ 
+
       if(err) {
         res.send(err);
       }
@@ -38,21 +43,24 @@ export class AddressController {
   }
   
   public updateAddress(req: Request, res: Response) {
-    Address.findOneAndUpdate({_id: req.params.addressId}, (err, address)=> {
+    Address.findOneAndUpdate({_id: req.params.addressId}, req.body, { new: true }, function(err, address) {
       if(err) {
+        console.log(err);
         res.send(err);
       }
+      console.log("success");
       res.json(address);
     });
   
   }
   
   public deleteAddressById(req: Request, res: Response) {
-    Address.remove({_id: req.params.addressId}, (err, address)=> {
+    console.log("in delete ", req.params);
+    Address.deleteOne({_id: req.params.addressId}, function(err, address) {
       if(err) {
         res.send(err);
       }
-      res.json(address);
+      res.json({message: "Successfully deleted"});
     });
   
   }  

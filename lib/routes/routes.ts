@@ -15,7 +15,7 @@ export class Routes {
       .get(this.addressController.getAllAddresses) // Show all addresses list 
       .post(this.addressController.addNewAddress) //Add address
     
-    app.route('/address/:addressID') // Editing contact list by ID
+    app.route('/address/:addressId') // Editing contact list by ID
       .get(this.addressController.getAddressById) // Get special address useing ID 
       .put(this.addressController.updateAddress)  // Update address useing ID
       .delete(this.addressController.deleteAddressById)  // Delete address useing ID
